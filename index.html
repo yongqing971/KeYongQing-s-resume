@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柯永庆 · 技术工程师（网络安全 / 商用密码行业）</title>
+<meta name="description" content="柯永庆个人简历网站：4 年商用密码与网络安全行业售后交付经验，擅长项目交付与复杂故障排查。">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ===== 设计 token ===== */
+:root{
+  --bg:#F6F7F9;
+  --card:#FFFFFF;
+  --ink:#1E2633;
+  --ink-2:#5A6472;
+  --line:#E3E7EE;
+  --brand:#155FA0;
+  --brand-ink:#0E4E85;
+  --brand-soft:#EAF2FA;
+  --accent:#0E9F6E;
+  --code-bg:#10161F;
+  --code-ink:#C9D4E0;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(20,32,48,.05),0 8px 24px rgba(20,32,48,.06);
+  --font-display:"Noto Serif SC","Songti SC","SimSun",serif;
+  --font-body:"Noto Sans SC","Microsoft YaHei","PingFang SC",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand-ink);text-decoration:none;}
+.container{max-width:1080px;margin:0 auto;padding:0 24px;}
+section{scroll-margin-top:76px;}
+
+/* ===== 顶栏 ===== */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1080px;margin:0 auto;padding:12px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:.5px;}
+.brand em{font-style:normal;color:var(--brand);}
+.nav{display:flex;align-items:center;gap:4px;list-style:none;}
+.nav a{
+  display:block;padding:10px 12px;border-radius:8px;
+  font-size:14.5px;color:var(--ink-2);font-weight:500;
+  transition:background .15s,color .15s;
+}
+.nav a:hover{background:var(--brand-soft);color:var(--brand-ink);}
+.nav .btn{padding:10px 16px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--brand);color:#fff;
+  font-size:14.5px;font-weight:600;
+  padding:11px 18px;border-radius:10px;
+  border:1px solid var(--brand);
+  cursor:pointer;transition:background .15s,transform .1s;
+  white-space:nowrap;
+}
+.btn:hover{background:var(--brand-ink);color:#fff;}
+.btn:active{transform:translateY(1px);}
+.btn svg{width:16px;height:16px;flex:none;}
+.btn-ghost{background:transparent;color:var(--brand-ink);border-color:var(--brand);}
+.btn-ghost:hover{background:var(--brand-soft);color:var(--brand-ink);}
+.menu-btn{display:none;}
+
+/* ===== Hero ===== */
+.hero{padding:72px 0 40px;}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;font-weight:500;color:var(--brand-ink);
+  background:var(--brand-soft);border:1px solid #D5E4F3;
+  padding:6px 12px;border-radius:999px;margin-bottom:20px;
+}
+.hero-eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none;}
+.hero h1{
+  font-family:var(--font-display);font-weight:900;
+  font-size:52px;line-height:1.15;letter-spacing:2px;
+}
+.hero-role{
+  margin-top:10px;font-size:19px;font-weight:500;color:var(--ink);
+}
+.hero-tagline{
+  margin-top:14px;font-size:15.5px;color:var(--ink-2);max-width:520px;
+}
+.hero-meta{
+  margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 22px;
+  font-size:14.5px;color:var(--ink-2);
+}
+.hero-meta a:hover{text-decoration:underline;}
+.hero-meta svg{width:15px;height:15px;vertical-align:-2px;margin-right:6px;stroke:var(--brand);}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;}
+
+.avatar-card{
+  position:relative;max-width:340px;margin-left:auto;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:14px 14px 10px;
+}
+.avatar-card img{
+  display:block;width:100%;border-radius:10px;
+  aspect-ratio:4/3;object-fit:cover;background:#fff;
+}
+.avatar-cap{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:10px 0 4px;font-size:13px;color:var(--ink-2);
+}
+.avatar-cap .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.hero-hint{margin-top:14px;font-size:12.5px;color:#8A93A1;}
+
+/* ===== 数据条 ===== */
+.stats{
+  margin-top:56px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  display:grid;grid-template-columns:repeat(6,1fr);
+}
+.stat{padding:20px 12px;text-align:center;border-right:1px solid var(--line);}
+.stat:last-child{border-right:none;}
+.stat b{
+  display:block;font-family:var(--font-display);font-weight:700;
+  font-size:26px;color:var(--brand);letter-spacing:.5px;
+}
+.stat span{display:block;margin-top:4px;font-size:12.5px;color:var(--ink-2);}
+
+/* ===== 通用区块 ===== */
+.block{padding:56px 0;}
+.block-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px;}
+.block-head .no{
+  font-family:var(--font-mono);font-size:14px;color:var(--brand);font-weight:700;
+  border:1px solid #CFE0F0;border-radius:6px;padding:2px 8px;background:var(--brand-soft);
+}
+.block-head h2{font-family:var(--font-display);font-weight:700;font-size:27px;letter-spacing:1px;}
+.block-head .rule{flex:1;height:1px;background:var(--line);}
+
+/* ===== 关于 ===== */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start;}
+.about-text{font-size:16px;color:var(--ink);}
+.about-text p + p{margin-top:12px;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.about-tags span{
+  font-size:13px;color:var(--brand-ink);background:var(--brand-soft);
+  border:1px solid #D5E4F3;padding:5px 12px;border-radius:999px;
+}
+.terminal{
+  background:var(--code-bg);border-radius:12px;overflow:hidden;
+  font-family:var(--font-mono);font-size:13px;line-height:1.75;
+  box-shadow:var(--shadow);
+}
+.term-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.08);}
+.term-bar i{width:10px;height:10px;border-radius:50%;display:block;}
+.term-bar i:nth-child(1){background:#F26D6D;}
+.term-bar i:nth-child(2){background:#F5BE4F;}
+.term-bar i:nth-child(3){background:#56C596;}
+.term-bar .title{margin-left:8px;color:#7A8794;font-size:12px;}
+.term-body{padding:16px 18px;color:var(--code-ink);}
+.term-body .ln{color:#6E7B88;user-select:none;}
+.term-body .ps1{color:#56C596;}
+.term-body .cmd{color:#E7EEF5;}
+.term-body .out{color:#9FB4C8;}
+.term-body .ok{color:#7CD4A8;}
+.term-body div{margin-bottom:2px;}
+
+/* ===== 工作经历 ===== */
+.timeline{position:relative;padding-left:28px;}
+.timeline::before{
+  content:"";position:absolute;left:6px;top:6px;bottom:6px;
+  width:2px;background:var(--line);border-radius:2px;
+}
+.tl-item{position:relative;padding:0 0 34px 10px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:"";position:absolute;left:-28px;top:8px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--card);border:3px solid var(--brand);
+}
+.tl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;}
+.tl-head h3{font-size:17.5px;font-weight:700;}
+.tl-head .role{font-size:14.5px;font-weight:500;color:var(--brand-ink);}
+.tl-head .date{font-family:var(--font-mono);font-size:13px;color:var(--ink-2);margin-left:auto;}
+.tl-sub{margin-top:4px;font-size:13.5px;color:var(--ink-2);}
+.tl-list{margin-top:14px;list-style:none;display:grid;gap:9px;}
+.tl-list li{
+  position:relative;padding-left:22px;font-size:14.8px;color:var(--ink);
+}
+.tl-list li::before{
+  content:"";position:absolute;left:2px;top:9px;
+  width:7px;height:7px;border-radius:2px;background:var(--brand);
+}
+
+/* ===== 项目经验 ===== */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.proj-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:24px;display:flex;flex-direction:column;gap:12px;
+}
+.proj-card .tag{
+  align-self:flex-start;font-size:12.5px;font-weight:600;letter-spacing:1px;
+  color:var(--brand-ink);background:var(--brand-soft);
+  border:1px solid #D5E4F3;border-radius:6px;padding:3px 10px;
+}
+.proj-card .tag.alt{color:var(--accent);background:#E7F5EF;border-color:#CFEADF;}
+.proj-card h3{font-size:16.5px;font-weight:700;line-height:1.45;}
+.proj-card .role{font-size:13px;color:var(--ink-2);}
+.proj-card ul{list-style:none;display:grid;gap:8px;}
+.proj-card li{position:relative;padding-left:18px;font-size:14px;color:var(--ink-2);}
+.proj-card li::before{
+  content:"";position:absolute;left:1px;top:8px;
+  width:6px;height:6px;border-radius:50%;background:var(--brand);
+}
+.proj-card li b{color:var(--ink);font-weight:600;}
+.proj-card.full{grid-column:1 / -1;}
+
+/* ===== 技能 ===== */
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.skill-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:18px 22px;
+}
+.skill-card h3{
+  font-size:14px;font-weight:700;letter-spacing:1.5px;color:var(--brand);
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.skill-card h3 svg{width:16px;height:16px;stroke:var(--brand);flex:none;}
+.skill-card p{font-size:14px;color:var(--ink);line-height:1.8;}
+
+/* ===== 教育 / 实习 ===== */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.edu-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:22px 24px;
+}
+.edu-card h3{font-size:16px;font-weight:700;}
+.edu-card .sub{font-size:13.5px;color:var(--brand-ink);margin-top:2px;}
+.edu-card .date{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-2);margin-top:8px;}
+.edu-card p{font-size:14px;color:var(--ink-2);margin-top:8px;}
+
+/* ===== 页脚 ===== */
+.footer{
+  border-top:1px solid var(--line);background:var(--card);
+  padding:34px 0 40px;margin-top:24px;
+}
+.footer-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+.footer .brand{font-size:16px;}
+.footer-links{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--ink-2);}
+.footer-links a:hover{text-decoration:underline;}
+.footer-note{width:100%;font-size:12.5px;color:#9AA3B0;margin-top:14px;}
+
+/* ===== 响应式 ===== */
+@media (max-width:860px){
+  .hero{padding:48px 0 28px;}
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .avatar-card{margin:0 auto;max-width:280px;}
+  .stats{grid-template-columns:repeat(3,1fr);}
+  .stat{border-bottom:1px solid var(--line);}
+  .stat:nth-child(3n){border-right:none;}
+  .stat:nth-last-child(-n+3){border-bottom:none;}
+  .proj-grid,.skill-grid,.edu-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .block{padding:44px 0;}
+  .block-head h2{font-size:23px;}
+}
+@media (max-width:640px){
+  .nav{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    background:#fff;border-bottom:1px solid var(--line);
+    flex-direction:column;align-items:stretch;padding:10px 16px 16px;gap:2px;
+  }
+  .nav.open{display:flex;}
+  .menu-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:10px;border:1px solid var(--line);
+    background:#fff;cursor:pointer;
+  }
+  .menu-btn svg{width:20px;height:20px;stroke:var(--ink);}
+  .hero h1{font-size:38px;}
+  .hero-role{font-size:16.5px;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none !important;animation:none !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶栏 ===== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">柯永庆<em>·</em>简历</a>
+    <nav class="nav" id="siteNav" aria-label="站点导航">
+      <a href="#about">关于</a>
+      <a href="#experience">工作经历</a>
+      <a href="#projects">项目经验</a>
+      <a href="#skills">技能</a>
+      <a href="#education">教育背景</a>
+      <a class="btn" href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        下载简历
+      </a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="展开菜单" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="dot"></span>求职意向：技术工程师（网络安全 / 商用密码行业）</div>
+        <h1>柯永庆</h1>
+        <p class="hero-role">售后工程师 · 4 年商用密码与网络安全行业经验</p>
+        <p class="hero-tagline">深耕商密产品与政企客户项目，覆盖交付、运维与复杂故障排查，服务政务、金融等关键行业。</p>
+        <div class="hero-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>158****3800</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span title="将 # 替换为 @">1552720404#qq.com</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>现居 三明</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a9 9 0 1 0-11 0"/><circle cx="12" cy="9" r="1"/><path d="M12 12v4m0 4h0"/></svg>期望城市 厦门</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>工作年限 4 年</span>
+        </div>
+        <p class="hero-hint">联系方式已作防爬虫脱敏：邮箱中的 # 请替换为 @</p>
+        <div class="hero-cta">
+          <a class="btn" href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+            下载 PDF 简历
+          </a>
+          <a class="btn btn-ghost" href="#experience">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            查看工作经历
+          </a>
+        </div>
+      </div>
+      <div class="avatar-card">
+        <img src="assets/avatar.jpg" alt="柯永庆头像">
+        <div class="avatar-cap"><span class="dot"></span>4 年 · 商用密码 · 网络安全</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>35+</b><span>服务政企客户</span></div>
+      <div class="stat"><b>100%</b><span>项目验收通过率</span></div>
+      <div class="stat"><b>20 家</b><span>银行系统对接</span></div>
+      <div class="stat"><b>10 万+</b><span>日均业务笔数</span></div>
+      <div class="stat"><b>0</b><span>核心业务中断</span></div>
+      <div class="stat"><b>30%</b><span>对接效率提升</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 关于 ===== -->
+<section class="block" id="about">
+  <div class="container">
+    <div class="block-head">
+      <span class="no">01</span>
+      <h2>个人优势</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>4 年商用密码行业售后交付经验，深耕商密产品与政企客户项目，擅长<strong>项目交付与复杂故障排查</strong>。具备从现场实施、联调上线到售后运维的全流程能力，在政务、金融等对稳定性要求极高的场景中保持核心业务零中断。</p>
+        <p>独立承担客户侧技术接口角色，统筹多家银行系统对接与年度维保，熟悉国密算法与证书体系，能在真实故障中快速定位根因。</p>
+        <div class="about-tags">
+          <span>项目全流程交付</span><span>复杂故障排查</span><span>7×24 应急保障</span><span>银行系统对接</span><span>技术文档编写</span>
+        </div>
+      </div>
+      <div class="terminal" role="img" aria-label="终端风格介绍">
+        <div class="term-bar"><i></i><i></i><i></i><span class="title">profile — zsh</span></div>
+        <div class="term-body">
+          <div><span class="ln">1</span> <span class="ps1">$</span> <span class="cmd">whoami</span></div>
+          <div><span class="ln">2</span> <span class="out">柯永庆 — 售后工程师 · 网络安全 / 商用密码</span></div>
+          <div><span class="ln">3</span> <span class="ps1">$</span> <span class="cmd">cat skills.md</span></div>
+          <div><span class="ln">4</span> <span class="out">Linux · 国密算法 · 故障排查 · API 对接</span></div>
+          <div><span class="ln">5</span> <span class="ps1">$</span> <span class="cmd">uptime</span></div>
+          <div><span class="ln">6</span> <span class="out">4 years on duty · 核心业务 <span class="ok">0 中断</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 工作经历 ===== -->
+<section class="block" id="experience" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="block-head">
+      <span class="no">02</span>
+      <h2>工作经历</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-head">
+          <h3>北京信安世纪科技股份有限公司</h3>
+          <span class="role">售后工程师</span>
+          <span class="date">2022.07 — 2026.07</span>
+        </div>
+        <p class="tl-sub">商用密码行业头部上市企业，服务政务、金融等政企客户</p>
+        <ul class="tl-list">
+          <li>独立负责政务、金融领域国密改造项目全生命周期交付与售后运维，服务 35+ 客户，验收通过率 100%。</li>
+          <li>作为厂商接口人统筹现场实施、联调上线到验收全流程，输出标准化文档与工具，对接效率提升 30%。</li>
+          <li>负责银行核心签名验签系统年度维保与故障响应，核心业务零中断，故障响应优于公司标准 30%。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 项目经验 ===== -->
+<section class="block" id="projects">
+  <div class="container">
+    <div class="block-head">
+      <span class="no">03</span>
+      <h2>项目经验</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <span class="tag">标准交付类</span>
+        <h3>福州不动产抵押直连 / 医银直连 / 社银信创改造</h3>
+        <span class="role">厂商项目负责人</span>
+        <ul>
+          <li>统筹 3 个省级政务金融标杆项目全流程交付，对接不动产中心、医保局、社保局及多家银行技术团队（不动产 <b>9 家</b>、医银 <b>7 家</b>、社银 <b>4 家</b>银行），制定实施计划并落地。</li>
+          <li>输出标准化 API 手册与可复用 Demo，指导客户侧完成密码产品对接，3 项目一次性通过验收。</li>
+        </ul>
+      </div>
+
+      <div class="proj-card">
+        <span class="tag alt">定制化 POC</span>
+        <h3>计量院国密应用对接项目</h3>
+        <span class="role">厂商技术负责人</span>
+        <ul>
+          <li>对接客户个性化需求，配合研发完成签章功能定制适配，通过可行性验证后正式签单交付上线。</li>
+        </ul>
+      </div>
+
+      <div class="proj-card">
+        <span class="tag alt">维保与运行保障</span>
+        <h3>银行核心签名验签系统年度维保</h3>
+        <span class="role">售后运维工程师</span>
+        <ul>
+          <li>负责某城商行核心业务系统密码设备年度运维，涵盖 RSA/SM2 证书更换、巡检、排障与 7×24 应急响应，支撑二代支付、数字人民币业务等，日均 <b>10 万+</b> 笔，核心业务零中断。</li>
+          <li>参与银行年度灾备机房切换演练，现场值守保障验签业务平滑切换，零切换事故。</li>
+        </ul>
+      </div>
+
+      <div class="proj-card">
+        <span class="tag">典型故障排查</span>
+        <h3>银行负载设备自动重启故障排查</h3>
+        <span class="role">现场技术支持</span>
+        <ul>
+          <li>客户负载设备凌晨自动重启（业务未中断），到现场按手册获取目标时段日志与快照文件，提交研发定位为设备内存故障，返厂维修后解决。</li>
+        </ul>
+      </div>
+
+      <div class="proj-card full">
+        <span class="tag">典型故障排查</span>
+        <h3>银行验签接口“签名被篡改”报错排查</h3>
+        <span class="role">厂商技术负责人</span>
+        <ul>
+          <li>针对验签接口 <b>-100104</b> 报错，逐项核查签名值格式、验签证书、原文与 userid 一致性、摘要算法及 Rawverify 机构列表证书，最终准确定位问题根因。</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 技能 ===== -->
+<section class="block" id="skills" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="block-head">
+      <span class="no">04</span>
+      <h2>核心技能</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>核心能力</h3>
+        <p>政企项目全流程交付、国密产品部署联调、故障排查与应急响应、技术文档编写、客户培训。</p>
+      </div>
+      <div class="skill-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>熟练工具</h3>
+        <p>Linux/CentOS、麒麟 Kylin、Wireshark、Postman/Apifox、密码设备运维。</p>
+      </div>
+      <div class="skill-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4-4v8"/></svg>技术知识</h3>
+        <p>SM2/SM3 国密算法、RSA 证书体系、TCP/IP 协议栈、RestAPI 接口规范。</p>
+      </div>
+      <div class="skill-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="15" r="3"/><path d="M11.5 11.5 13 13m-3-6 1.5 1.5M10 6H7m0 0V3m0 3H4"/></svg>了解范围</h3>
+        <p>Cisco 路由交换、防火墙/堡垒机/WAF、Java 基础开发。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 教育 / 实习 ===== -->
+<section class="block" id="education">
+  <div class="container">
+    <div class="block-head">
+      <span class="no">05</span>
+      <h2>教育背景</h2>
+      <span class="rule"></span>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>莆田学院 · 通信工程（统招本科）</h3>
+        <p class="date">2018.09 — 2022.06</p>
+      </div>
+      <div class="edu-card">
+        <h3>北京天融信网络安全技术有限公司福州分公司</h3>
+        <p class="sub">售后工程师（实习生）</p>
+        <p class="date">2022.03 — 2022.06</p>
+        <p>参与南平某高校安全设备实施，配置出口防火墙、上网行为管理、WAF 等设备，协助完成验收。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="brand">柯永庆<em>·</em>简历</span>
+    <div class="footer-links">
+      <span>158****3800</span>
+      <span>1552720404#qq.com（# 替换为 @）</span>
+      <a href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener">下载 PDF 简历</a>
+    </div>
+    <p class="footer-note">单页简历网站 · 数据以《柯永庆_简历_2026_售后.pdf》为准 · 联系方式已脱敏 · © 2026</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var nav = document.getElementById('siteNav');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
