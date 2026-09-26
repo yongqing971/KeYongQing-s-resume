@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>柯永庆 · 技术工程师（网络安全 / 商用密码行业）</title>
 <meta name="description" content="柯永庆个人简历网站：4 年商用密码与网络安全行业售后交付经验，擅长项目交付与复杂故障排查。">
-<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<!-- Open Graph -->
+<meta property="og:title" content="柯永庆 · 技术工程师（网络安全 / 商用密码行业）">
+<meta property="og:description" content="柯永庆个人简历网站：4 年商用密码与网络安全行业售后交付经验，擅长项目交付与复杂故障排查。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keyongqing.tech/">
+<meta property="og:image" content="https://keyongqing.tech/assets/avatar.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 /* ===== 设计 token ===== */
 :root{
@@ -76,6 +84,31 @@ section{scroll-margin-top:76px;}
 .btn-ghost{background:transparent;color:var(--brand-ink);border-color:var(--brand);}
 .btn-ghost:hover{background:var(--brand-soft);color:var(--brand-ink);}
 .menu-btn{display:none;}
+
+/* ===== 语言切换 ===== */
+.lang-wrap{position:relative;}
+.lang-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:14.5px;font-weight:600;color:var(--ink-2);
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:9px 12px;cursor:pointer;white-space:nowrap;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.lang-btn:hover{background:var(--brand-soft);color:var(--brand-ink);border-color:#D5E4F3;}
+.lang-btn svg{width:15px;height:15px;stroke:currentColor;flex:none;}
+.lang-menu{
+  position:absolute;top:calc(100% + 6px);right:0;min-width:160px;
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  box-shadow:var(--shadow);padding:6px;list-style:none;display:none;z-index:60;
+}
+.lang-menu.open{display:block;}
+.lang-menu li{list-style:none;}
+.lang-menu button{
+  display:block;width:100%;text-align:left;font-size:14px;color:var(--ink);
+  background:none;border:none;border-radius:6px;padding:8px 10px;cursor:pointer;
+}
+.lang-menu button:hover{background:var(--brand-soft);color:var(--brand-ink);}
+.lang-menu button.active{font-weight:700;color:var(--brand-ink);background:var(--brand-soft);}
 
 /* ===== Hero ===== */
 .hero{padding:72px 0 40px;}
@@ -258,7 +291,8 @@ section{scroll-margin-top:76px;}
 .footer .brand{font-size:16px;}
 .footer-links{display:flex;flex-wrap:wrap;gap:18px;font-size:14px;color:var(--ink-2);}
 .footer-links a:hover{text-decoration:underline;}
-.footer-note{width:100%;font-size:12.5px;color:#9AA3B0;margin-top:14px;}
+.footer-visits{width:100%;font-size:12.5px;color:#9AA3B0;margin-top:6px;}
+.footer-note{width:100%;font-size:12.5px;color:#9AA3B0;margin-top:6px;}
 
 /* ===== 响应式 ===== */
 @media (max-width:860px){
@@ -287,8 +321,25 @@ section{scroll-margin-top:76px;}
     background:#fff;cursor:pointer;
   }
   .menu-btn svg{width:20px;height:20px;stroke:var(--ink);}
+  .lang-wrap{width:100%;}
+  .lang-btn{width:100%;justify-content:center;}
   .hero h1{font-size:38px;}
   .hero-role{font-size:16.5px;}
+}
+@media print{
+  body{background:#fff;color:#000;font-size:12px;}
+  .topbar,.hero-cta,.menu-btn,.lang-wrap,.hero-hint,.terminal,.avatar-card,.footer-links a{display:none !important;}
+  .hero{padding:24px 0 8px;}
+  .hero-meta{margin-top:14px;}
+  .stats{margin-top:24px;}
+  .block{padding:18px 0;}
+  .block-head{margin-bottom:16px;}
+  section{background:#fff !important;border:none !important;}
+  .proj-card,.skill-card,.edu-card,.stats{box-shadow:none;border:1px solid #ccc;}
+  .proj-card,.skill-card,.edu-card{break-inside:avoid;}
+  .footer{margin-top:0;padding:14px 0 18px;border-top:1px solid #ccc;}
+  .footer-note,.footer-visits{color:#555;}
+  a{color:#000;}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
@@ -301,19 +352,31 @@ section{scroll-margin-top:76px;}
 <!-- ===== 顶栏 ===== -->
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="brand" href="#top">柯永庆<em>·</em>简历</a>
-    <nav class="nav" id="siteNav" aria-label="站点导航">
-      <a href="#about">关于</a>
-      <a href="#experience">工作经历</a>
-      <a href="#projects">项目经验</a>
-      <a href="#skills">技能</a>
-      <a href="#education">教育背景</a>
+    <a class="brand" href="#top" data-i18n-html="brand">柯永庆<em>·</em>简历</a>
+    <nav class="nav" id="siteNav" aria-label="站点导航" data-i18n-aria="aria.nav">
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="#experience" data-i18n="nav.experience">工作经历</a>
+      <a href="#projects" data-i18n="nav.projects">项目经验</a>
+      <a href="#skills" data-i18n="nav.skills">技能</a>
+      <a href="#education" data-i18n="nav.education">教育背景</a>
+      <div class="lang-wrap">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="语言选择">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="langBtnText">中文</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu">
+          <li><button class="lang-opt" data-lang="zh" type="button">中文</button></li>
+          <li><button class="lang-opt" data-lang="en" type="button">English</button></li>
+          <li><button class="lang-opt" data-lang="vi" type="button">Tiếng Việt</button></li>
+        </ul>
+      </div>
       <a class="btn" href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-        下载简历
+        <span data-i18n="nav.download">下载简历</span>
       </a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="展开菜单" aria-expanded="false">
+    <button class="menu-btn" id="menuBtn" aria-label="展开菜单" aria-expanded="false" data-i18n-aria="aria.menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
@@ -324,42 +387,42 @@ section{scroll-margin-top:76px;}
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-eyebrow"><span class="dot"></span>求职意向：技术工程师（网络安全 / 商用密码行业）</div>
-        <h1>柯永庆</h1>
-        <p class="hero-role">售后工程师 · 4 年商用密码与网络安全行业经验</p>
-        <p class="hero-tagline">深耕商密产品与政企客户项目，覆盖交付、运维与复杂故障排查，服务政务、金融等关键行业。</p>
+        <div class="hero-eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">求职意向：技术工程师（网络安全 / 商用密码行业）</span></div>
+        <h1 data-i18n="hero.name">柯永庆</h1>
+        <p class="hero-role" data-i18n="hero.role">售后工程师 · 4 年商用密码与网络安全行业经验</p>
+        <p class="hero-tagline" data-i18n="hero.tagline">深耕商密产品与政企客户项目，覆盖交付、运维与复杂故障排查，服务政务、金融等关键行业。</p>
         <div class="hero-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>158****3800</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span title="将 # 替换为 @">1552720404#qq.com</span></span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>现居 三明</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a9 9 0 1 0-11 0"/><circle cx="12" cy="9" r="1"/><path d="M12 12v4m0 4h0"/></svg>期望城市 厦门</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>工作年限 4 年</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span title="将 # 替换为 @" data-i18n-title="email.hint">1552720404#qq.com</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="hero.meta.location">现居 三明</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a9 9 0 1 0-11 0"/><circle cx="12" cy="9" r="1"/><path d="M12 12v4m0 4h0"/></svg><span data-i18n="hero.meta.city">期望城市 厦门</span></span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="hero.meta.years">工作年限 4 年</span></span>
         </div>
-        <p class="hero-hint">联系方式已作防爬虫脱敏：邮箱中的 # 请替换为 @</p>
+        <p class="hero-hint" data-i18n="hero.hint">联系方式已作防爬虫脱敏：邮箱中的 # 请替换为 @</p>
         <div class="hero-cta">
           <a class="btn" href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-            下载 PDF 简历
+            <span data-i18n="hero.cta.pdf">下载 PDF 简历</span>
           </a>
           <a class="btn btn-ghost" href="#experience">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
-            查看工作经历
+            <span data-i18n="hero.cta.experience">查看工作经历</span>
           </a>
         </div>
       </div>
       <div class="avatar-card">
-        <img src="assets/avatar.jpg" alt="柯永庆头像">
-        <div class="avatar-cap"><span class="dot"></span>4 年 · 商用密码 · 网络安全</div>
+        <img src="assets/avatar.jpg" alt="柯永庆头像" data-i18n-alt="avatar.alt">
+        <div class="avatar-cap"><span class="dot"></span><span data-i18n="avatar.cap">4 年 · 商用密码 · 网络安全</span></div>
       </div>
     </div>
 
     <div class="stats">
-      <div class="stat"><b>35+</b><span>服务政企客户</span></div>
-      <div class="stat"><b>100%</b><span>项目验收通过率</span></div>
-      <div class="stat"><b>20 家</b><span>银行系统对接</span></div>
-      <div class="stat"><b>10 万+</b><span>日均业务笔数</span></div>
-      <div class="stat"><b>0</b><span>核心业务中断</span></div>
-      <div class="stat"><b>30%</b><span>对接效率提升</span></div>
+      <div class="stat"><b>35+</b><span data-i18n="stats.clients">服务政企客户</span></div>
+      <div class="stat"><b>100%</b><span data-i18n="stats.accept">项目验收通过率</span></div>
+      <div class="stat"><b>20 家</b><span data-i18n="stats.banks">银行系统对接</span></div>
+      <div class="stat"><b>10 万+</b><span data-i18n="stats.daily">日均业务笔数</span></div>
+      <div class="stat"><b>0</b><span data-i18n="stats.outage">核心业务中断</span></div>
+      <div class="stat"><b>30%</b><span data-i18n="stats.efficiency">对接效率提升</span></div>
     </div>
   </div>
 </section>
@@ -369,26 +432,26 @@ section{scroll-margin-top:76px;}
   <div class="container">
     <div class="block-head">
       <span class="no">01</span>
-      <h2>个人优势</h2>
+      <h2 data-i18n="about.title">个人优势</h2>
       <span class="rule"></span>
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p>4 年商用密码行业售后交付经验，深耕商密产品与政企客户项目，擅长<strong>项目交付与复杂故障排查</strong>。具备从现场实施、联调上线到售后运维的全流程能力，在政务、金融等对稳定性要求极高的场景中保持核心业务零中断。</p>
-        <p>独立承担客户侧技术接口角色，统筹多家银行系统对接与年度维保，熟悉国密算法与证书体系，能在真实故障中快速定位根因。</p>
+        <p data-i18n-html="about.p1">4 年商用密码行业售后交付经验，深耕商密产品与政企客户项目，擅长<strong>项目交付与复杂故障排查</strong>。具备从现场实施、联调上线到售后运维的全流程能力，在政务、金融等对稳定性要求极高的场景中保持核心业务零中断。</p>
+        <p data-i18n="about.p2">独立承担客户侧技术接口角色，统筹多家银行系统对接与年度维保，熟悉国密算法与证书体系，能在真实故障中快速定位根因。</p>
         <div class="about-tags">
-          <span>项目全流程交付</span><span>复杂故障排查</span><span>7×24 应急保障</span><span>银行系统对接</span><span>技术文档编写</span>
+          <span data-i18n="about.tag1">项目全流程交付</span><span data-i18n="about.tag2">复杂故障排查</span><span data-i18n="about.tag3">7×24 应急保障</span><span data-i18n="about.tag4">银行系统对接</span><span data-i18n="about.tag5">技术文档编写</span><span data-i18n="about.tag6">信创适配</span>
         </div>
       </div>
-      <div class="terminal" role="img" aria-label="终端风格介绍">
+      <div class="terminal" role="img" aria-label="终端风格介绍" data-i18n-aria="terminal.aria">
         <div class="term-bar"><i></i><i></i><i></i><span class="title">profile — zsh</span></div>
         <div class="term-body">
           <div><span class="ln">1</span> <span class="ps1">$</span> <span class="cmd">whoami</span></div>
-          <div><span class="ln">2</span> <span class="out">柯永庆 — 售后工程师 · 网络安全 / 商用密码</span></div>
+          <div><span class="ln">2</span> <span class="out" data-i18n="terminal.out2">柯永庆 — 售后工程师 · 网络安全 / 商用密码</span></div>
           <div><span class="ln">3</span> <span class="ps1">$</span> <span class="cmd">cat skills.md</span></div>
-          <div><span class="ln">4</span> <span class="out">Linux · 国密算法 · 故障排查 · API 对接</span></div>
+          <div><span class="ln">4</span> <span class="out" data-i18n="terminal.out4">Linux · 国密算法 · 故障排查 · API 对接</span></div>
           <div><span class="ln">5</span> <span class="ps1">$</span> <span class="cmd">uptime</span></div>
-          <div><span class="ln">6</span> <span class="out">4 years on duty · 核心业务 <span class="ok">0 中断</span></span></div>
+          <div><span class="ln">6</span> <span class="out" data-i18n-html="terminal.out6">4 years on duty · 核心业务 <span class="ok">0 中断</span></span></div>
         </div>
       </div>
     </div>
@@ -400,21 +463,21 @@ section{scroll-margin-top:76px;}
   <div class="container">
     <div class="block-head">
       <span class="no">02</span>
-      <h2>工作经历</h2>
+      <h2 data-i18n="exp.title">工作经历</h2>
       <span class="rule"></span>
     </div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-head">
-          <h3>北京信安世纪科技股份有限公司</h3>
-          <span class="role">售后工程师</span>
+          <h3 data-i18n="exp.company">北京信安世纪科技股份有限公司</h3>
+          <span class="role" data-i18n="exp.role">售后工程师</span>
           <span class="date">2022.07 — 2026.07</span>
         </div>
-        <p class="tl-sub">商用密码行业头部上市企业，服务政务、金融等政企客户</p>
+        <p class="tl-sub" data-i18n="exp.sub">商用密码行业头部上市企业，服务政务、金融等政企客户</p>
         <ul class="tl-list">
-          <li>独立负责政务、金融领域国密改造项目全生命周期交付与售后运维，服务 35+ 客户，验收通过率 100%。</li>
-          <li>作为厂商接口人统筹现场实施、联调上线到验收全流程，输出标准化文档与工具，对接效率提升 30%。</li>
-          <li>负责银行核心签名验签系统年度维保与故障响应，核心业务零中断，故障响应优于公司标准 30%。</li>
+          <li data-i18n="exp.b1">独立负责政务、金融领域国密改造项目全生命周期交付与售后运维，服务 35+ 客户，验收通过率 100%。</li>
+          <li data-i18n="exp.b2">作为厂商接口人统筹现场实施、联调上线到验收全流程，输出标准化文档与工具，对接效率提升 30%。</li>
+          <li data-i18n="exp.b3">负责银行核心签名验签系统年度维保与故障响应，核心业务零中断，故障响应优于公司标准 30%。</li>
         </ul>
       </div>
     </div>
@@ -426,55 +489,55 @@ section{scroll-margin-top:76px;}
   <div class="container">
     <div class="block-head">
       <span class="no">03</span>
-      <h2>项目经验</h2>
+      <h2 data-i18n="proj.title">项目经验</h2>
       <span class="rule"></span>
     </div>
     <div class="proj-grid">
 
       <div class="proj-card">
-        <span class="tag">标准交付类</span>
-        <h3>福州不动产抵押直连 / 医银直连 / 社银信创改造</h3>
-        <span class="role">厂商项目负责人</span>
+        <span class="tag" data-i18n="proj.t1">标准交付类</span>
+        <h3 data-i18n="proj.p1.title">福州不动产抵押直连 / 医银直连 / 社银信创改造</h3>
+        <span class="role" data-i18n="proj.p1.role">厂商项目负责人</span>
         <ul>
-          <li>统筹 3 个省级政务金融标杆项目全流程交付，对接不动产中心、医保局、社保局及多家银行技术团队（不动产 <b>9 家</b>、医银 <b>7 家</b>、社银 <b>4 家</b>银行），制定实施计划并落地。</li>
-          <li>输出标准化 API 手册与可复用 Demo，指导客户侧完成密码产品对接，3 项目一次性通过验收。</li>
+          <li data-i18n-html="proj.p1.l1">统筹 3 个省级政务金融标杆项目全流程交付，对接不动产中心、医保局、社保局及多家银行技术团队（不动产 <b>9 家</b>、医银 <b>7 家</b>、社银 <b>4 家</b>银行），制定实施计划并落地。</li>
+          <li data-i18n="proj.p1.l2">输出标准化 API 手册与可复用 Demo，指导客户侧完成密码产品对接，3 项目一次性通过验收。</li>
         </ul>
       </div>
 
       <div class="proj-card">
-        <span class="tag alt">定制化 POC</span>
-        <h3>计量院国密应用对接项目</h3>
-        <span class="role">厂商技术负责人</span>
+        <span class="tag alt" data-i18n="proj.t2">定制化 POC</span>
+        <h3 data-i18n="proj.p2.title">计量院国密应用对接项目</h3>
+        <span class="role" data-i18n="proj.p2.role">厂商技术负责人</span>
         <ul>
-          <li>对接客户个性化需求，配合研发完成签章功能定制适配，通过可行性验证后正式签单交付上线。</li>
+          <li data-i18n="proj.p2.l1">对接客户个性化需求，配合研发完成签章功能定制适配，通过可行性验证后正式签单交付上线。</li>
         </ul>
       </div>
 
       <div class="proj-card">
-        <span class="tag alt">维保与运行保障</span>
-        <h3>银行核心签名验签系统年度维保</h3>
-        <span class="role">售后运维工程师</span>
+        <span class="tag alt" data-i18n="proj.t3">维保与运行保障</span>
+        <h3 data-i18n="proj.p3.title">银行核心签名验签系统年度维保</h3>
+        <span class="role" data-i18n="proj.p3.role">售后运维工程师</span>
         <ul>
-          <li>负责某城商行核心业务系统密码设备年度运维，涵盖 RSA/SM2 证书更换、巡检、排障与 7×24 应急响应，支撑二代支付、数字人民币业务等，日均 <b>10 万+</b> 笔，核心业务零中断。</li>
-          <li>参与银行年度灾备机房切换演练，现场值守保障验签业务平滑切换，零切换事故。</li>
+          <li data-i18n-html="proj.p3.l1">负责某城商行核心业务系统密码设备年度运维，涵盖 RSA/SM2 证书更换、巡检、排障与 7×24 应急响应，支撑二代支付、数字人民币业务等，日均 <b>10 万+</b> 笔，核心业务零中断。</li>
+          <li data-i18n="proj.p3.l2">参与银行年度灾备机房切换演练，现场值守保障验签业务平滑切换，零切换事故。</li>
         </ul>
       </div>
 
       <div class="proj-card">
-        <span class="tag">典型故障排查</span>
-        <h3>银行负载设备自动重启故障排查</h3>
-        <span class="role">现场技术支持</span>
+        <span class="tag" data-i18n="proj.t4">典型故障排查</span>
+        <h3 data-i18n="proj.p4.title">银行负载设备自动重启故障排查</h3>
+        <span class="role" data-i18n="proj.p4.role">现场技术支持</span>
         <ul>
-          <li>客户负载设备凌晨自动重启（业务未中断），到现场按手册获取目标时段日志与快照文件，提交研发定位为设备内存故障，返厂维修后解决。</li>
+          <li data-i18n="proj.p4.l1">客户负载设备凌晨自动重启（业务未中断），到现场按手册获取目标时段日志与快照文件，提交研发定位为设备内存故障，返厂维修后解决。</li>
         </ul>
       </div>
 
       <div class="proj-card full">
-        <span class="tag">典型故障排查</span>
-        <h3>银行验签接口“签名被篡改”报错排查</h3>
-        <span class="role">厂商技术负责人</span>
+        <span class="tag" data-i18n="proj.t4">典型故障排查</span>
+        <h3 data-i18n="proj.p5.title">银行验签接口“签名被篡改”报错排查</h3>
+        <span class="role" data-i18n="proj.p5.role">厂商技术负责人</span>
         <ul>
-          <li>针对验签接口 <b>-100104</b> 报错，逐项核查签名值格式、验签证书、原文与 userid 一致性、摘要算法及 Rawverify 机构列表证书，最终准确定位问题根因。</li>
+          <li data-i18n-html="proj.p5.l1">针对验签接口 <b>-100104</b> 报错，逐项核查签名值格式、验签证书、原文与 userid 一致性、摘要算法及 Rawverify 机构列表证书，最终准确定位问题根因。</li>
         </ul>
       </div>
 
@@ -487,25 +550,25 @@ section{scroll-margin-top:76px;}
   <div class="container">
     <div class="block-head">
       <span class="no">04</span>
-      <h2>核心技能</h2>
+      <h2 data-i18n="skills.title">核心技能</h2>
       <span class="rule"></span>
     </div>
     <div class="skill-grid">
       <div class="skill-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>核心能力</h3>
-        <p>政企项目全流程交付、国密产品部署联调、故障排查与应急响应、技术文档编写、客户培训。</p>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg><span data-i18n="skills.c1.h">核心能力</span></h3>
+        <p data-i18n="skills.c1.p">政企项目全流程交付、国密产品部署联调、故障排查与应急响应、技术文档编写、客户培训。</p>
       </div>
       <div class="skill-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>熟练工具</h3>
-        <p>Linux/CentOS、麒麟 Kylin、Wireshark、Postman/Apifox、密码设备运维。</p>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><span data-i18n="skills.c2.h">熟练工具</span></h3>
+        <p data-i18n="skills.c2.p">Linux/CentOS、麒麟 Kylin、Wireshark、Postman/Apifox、密码设备运维。</p>
       </div>
       <div class="skill-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4-4v8"/></svg>技术知识</h3>
-        <p>SM2/SM3 国密算法、RSA 证书体系、TCP/IP 协议栈、RestAPI 接口规范。</p>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4-4v8"/></svg><span data-i18n="skills.c3.h">技术知识</span></h3>
+        <p data-i18n="skills.c3.p">SM2/SM3 国密算法、RSA 证书体系、TCP/IP 协议栈、RestAPI 接口规范；等保 2.0、商用密码应用安全性评估（密评）、密码机/HSM、CA 证书体系、密钥管理。</p>
       </div>
       <div class="skill-card">
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="15" r="3"/><path d="M11.5 11.5 13 13m-3-6 1.5 1.5M10 6H7m0 0V3m0 3H4"/></svg>了解范围</h3>
-        <p>Cisco 路由交换、防火墙/堡垒机/WAF、Java 基础开发。</p>
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="15" r="3"/><path d="M11.5 11.5 13 13m-3-6 1.5 1.5M10 6H7m0 0V3m0 3H4"/></svg><span data-i18n="skills.c4.h">了解范围</span></h3>
+        <p data-i18n="skills.c4.p">Cisco 路由交换、防火墙/堡垒机/WAF、Java 基础开发。</p>
       </div>
     </div>
   </div>
@@ -516,19 +579,19 @@ section{scroll-margin-top:76px;}
   <div class="container">
     <div class="block-head">
       <span class="no">05</span>
-      <h2>教育背景</h2>
+      <h2 data-i18n="edu.title">教育背景</h2>
       <span class="rule"></span>
     </div>
     <div class="edu-grid">
       <div class="edu-card">
-        <h3>莆田学院 · 通信工程（统招本科）</h3>
+        <h3 data-i18n="edu.u.name">莆田学院 · 通信工程（统招本科）</h3>
         <p class="date">2018.09 — 2022.06</p>
       </div>
       <div class="edu-card">
-        <h3>北京天融信网络安全技术有限公司福州分公司</h3>
-        <p class="sub">售后工程师（实习生）</p>
+        <h3 data-i18n="edu.intern.name">北京天融信网络安全技术有限公司福州分公司</h3>
+        <p class="sub" data-i18n="edu.intern.sub">售后工程师（实习生）</p>
         <p class="date">2022.03 — 2022.06</p>
-        <p>参与南平某高校安全设备实施，配置出口防火墙、上网行为管理、WAF 等设备，协助完成验收。</p>
+        <p data-i18n="edu.intern.p">参与南平某高校安全设备实施，配置出口防火墙、上网行为管理、WAF 等设备，协助完成验收。</p>
       </div>
     </div>
   </div>
@@ -537,33 +600,420 @@ section{scroll-margin-top:76px;}
 <!-- ===== 页脚 ===== -->
 <footer class="footer">
   <div class="container footer-inner">
-    <span class="brand">柯永庆<em>·</em>简历</span>
+    <span class="brand" data-i18n-html="footer.brand">柯永庆<em>·</em>简历</span>
     <div class="footer-links">
       <span>158****3800</span>
-      <span>1552720404#qq.com（# 替换为 @）</span>
-      <a href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener">下载 PDF 简历</a>
+      <span>1552720404#qq.com（<span data-i18n="footer.emailHint"># 替换为 @</span>）</span>
+      <a href="https://github.com/yongqing971" target="_blank" rel="noopener">GitHub</a>
+      <a href="assets/resume.pdf" download="柯永庆_简历_2026_售后_脱敏版.pdf" target="_blank" rel="noopener" data-i18n="footer.pdf">下载 PDF 简历</a>
     </div>
-    <p class="footer-note">单页简历网站 · 数据以《柯永庆_简历_2026_售后.pdf》为准 · 联系方式已脱敏 · © 2026</p>
+    <p class="footer-visits"><span data-i18n="footer.visits">本站访问量</span>：<span id="busuanzi_value_site_pv"></span> PV / <span id="busuanzi_value_site_uv"></span> UV</p>
+    <p class="footer-note" data-i18n="footer.note">单页简历网站 · 数据以《柯永庆_简历_2026_售后.pdf》为准 · 联系方式已脱敏 · © 2026</p>
   </div>
 </footer>
 
 <script>
 (function(){
-  var btn = document.getElementById('menuBtn');
-  var nav = document.getElementById('siteNav');
-  if (btn && nav) {
-    btn.addEventListener('click', function(){
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  var I18N = {
+    "zh": {
+      "_title": "柯永庆 · 技术工程师（网络安全 / 商用密码行业）",
+      "_desc": "柯永庆个人简历网站：4 年商用密码与网络安全行业售后交付经验，擅长项目交付与复杂故障排查。",
+      "_og_title": "柯永庆 · 技术工程师（网络安全 / 商用密码行业）",
+      "_og_desc": "柯永庆个人简历网站：4 年商用密码与网络安全行业售后交付经验，擅长项目交付与复杂故障排查。",
+      "_lang_name": "中文",
+      "aria.nav": "站点导航",
+      "aria.menu": "展开菜单",
+      "email.hint": "将 # 替换为 @",
+      "brand": "柯永庆<em>·</em>简历",
+      "nav.about": "关于",
+      "nav.experience": "工作经历",
+      "nav.projects": "项目经验",
+      "nav.skills": "技能",
+      "nav.education": "教育背景",
+      "nav.download": "下载简历",
+      "hero.eyebrow": "求职意向：技术工程师（网络安全 / 商用密码行业）",
+      "hero.name": "柯永庆",
+      "hero.role": "售后工程师 · 4 年商用密码与网络安全行业经验",
+      "hero.tagline": "深耕商密产品与政企客户项目，覆盖交付、运维与复杂故障排查，服务政务、金融等关键行业。",
+      "hero.meta.location": "现居 三明",
+      "hero.meta.city": "期望城市 厦门",
+      "hero.meta.years": "工作年限 4 年",
+      "hero.hint": "联系方式已作防爬虫脱敏：邮箱中的 # 请替换为 @",
+      "hero.cta.pdf": "下载 PDF 简历",
+      "hero.cta.experience": "查看工作经历",
+      "avatar.alt": "柯永庆头像",
+      "avatar.cap": "4 年 · 商用密码 · 网络安全",
+      "stats.clients": "服务政企客户",
+      "stats.accept": "项目验收通过率",
+      "stats.banks": "银行系统对接",
+      "stats.daily": "日均业务笔数",
+      "stats.outage": "核心业务中断",
+      "stats.efficiency": "对接效率提升",
+      "about.title": "个人优势",
+      "about.p1": "4 年商用密码行业售后交付经验，深耕商密产品与政企客户项目，擅长<strong>项目交付与复杂故障排查</strong>。具备从现场实施、联调上线到售后运维的全流程能力，在政务、金融等对稳定性要求极高的场景中保持核心业务零中断。",
+      "about.p2": "独立承担客户侧技术接口角色，统筹多家银行系统对接与年度维保，熟悉国密算法与证书体系，能在真实故障中快速定位根因。",
+      "about.tag1": "项目全流程交付",
+      "about.tag2": "复杂故障排查",
+      "about.tag3": "7×24 应急保障",
+      "about.tag4": "银行系统对接",
+      "about.tag5": "技术文档编写",
+      "about.tag6": "信创适配",
+      "terminal.aria": "终端风格介绍",
+      "terminal.out2": "柯永庆 — 售后工程师 · 网络安全 / 商用密码",
+      "terminal.out4": "Linux · 国密算法 · 故障排查 · API 对接",
+      "terminal.out6": "4 years on duty · 核心业务 <span class='ok'>0 中断</span>",
+      "exp.title": "工作经历",
+      "exp.company": "北京信安世纪科技股份有限公司",
+      "exp.role": "售后工程师",
+      "exp.sub": "商用密码行业头部上市企业，服务政务、金融等政企客户",
+      "exp.b1": "独立负责政务、金融领域国密改造项目全生命周期交付与售后运维，服务 35+ 客户，验收通过率 100%。",
+      "exp.b2": "作为厂商接口人统筹现场实施、联调上线到验收全流程，输出标准化文档与工具，对接效率提升 30%。",
+      "exp.b3": "负责银行核心签名验签系统年度维保与故障响应，核心业务零中断，故障响应优于公司标准 30%。",
+      "proj.title": "项目经验",
+      "proj.t1": "标准交付类",
+      "proj.t2": "定制化 POC",
+      "proj.t3": "维保与运行保障",
+      "proj.t4": "典型故障排查",
+      "proj.p1.title": "福州不动产抵押直连 / 医银直连 / 社银信创改造",
+      "proj.p1.role": "厂商项目负责人",
+      "proj.p1.l1": "统筹 3 个省级政务金融标杆项目全流程交付，对接不动产中心、医保局、社保局及多家银行技术团队（不动产 <b>9 家</b>、医银 <b>7 家</b>、社银 <b>4 家</b>银行），制定实施计划并落地。",
+      "proj.p1.l2": "输出标准化 API 手册与可复用 Demo，指导客户侧完成密码产品对接，3 项目一次性通过验收。",
+      "proj.p2.title": "计量院国密应用对接项目",
+      "proj.p2.role": "厂商技术负责人",
+      "proj.p2.l1": "对接客户个性化需求，配合研发完成签章功能定制适配，通过可行性验证后正式签单交付上线。",
+      "proj.p3.title": "银行核心签名验签系统年度维保",
+      "proj.p3.role": "售后运维工程师",
+      "proj.p3.l1": "负责某城商行核心业务系统密码设备年度运维，涵盖 RSA/SM2 证书更换、巡检、排障与 7×24 应急响应，支撑二代支付、数字人民币业务等，日均 <b>10 万+</b> 笔，核心业务零中断。",
+      "proj.p3.l2": "参与银行年度灾备机房切换演练，现场值守保障验签业务平滑切换，零切换事故。",
+      "proj.p4.title": "银行负载设备自动重启故障排查",
+      "proj.p4.role": "现场技术支持",
+      "proj.p4.l1": "客户负载设备凌晨自动重启（业务未中断），到现场按手册获取目标时段日志与快照文件，提交研发定位为设备内存故障，返厂维修后解决。",
+      "proj.p5.title": "银行验签接口“签名被篡改”报错排查",
+      "proj.p5.role": "厂商技术负责人",
+      "proj.p5.l1": "针对验签接口 <b>-100104</b> 报错，逐项核查签名值格式、验签证书、原文与 userid 一致性、摘要算法及 Rawverify 机构列表证书，最终准确定位问题根因。",
+      "skills.title": "核心技能",
+      "skills.c1.h": "核心能力",
+      "skills.c1.p": "政企项目全流程交付、国密产品部署联调、故障排查与应急响应、技术文档编写、客户培训。",
+      "skills.c2.h": "熟练工具",
+      "skills.c2.p": "Linux/CentOS、麒麟 Kylin、Wireshark、Postman/Apifox、密码设备运维。",
+      "skills.c3.h": "技术知识",
+      "skills.c3.p": "SM2/SM3 国密算法、RSA 证书体系、TCP/IP 协议栈、RestAPI 接口规范；等保 2.0、商用密码应用安全性评估（密评）、密码机/HSM、CA 证书体系、密钥管理。",
+      "skills.c4.h": "了解范围",
+      "skills.c4.p": "Cisco 路由交换、防火墙/堡垒机/WAF、Java 基础开发。",
+      "edu.title": "教育背景",
+      "edu.u.name": "莆田学院 · 通信工程（统招本科）",
+      "edu.intern.name": "北京天融信网络安全技术有限公司福州分公司",
+      "edu.intern.sub": "售后工程师（实习生）",
+      "edu.intern.p": "参与南平某高校安全设备实施，配置出口防火墙、上网行为管理、WAF 等设备，协助完成验收。",
+      "footer.brand": "柯永庆<em>·</em>简历",
+      "footer.pdf": "下载 PDF 简历",
+      "footer.emailHint": "# 替换为 @",
+      "footer.visits": "本站访问量",
+      "footer.note": "单页简历网站 · 数据以《柯永庆_简历_2026_售后.pdf》为准 · 联系方式已脱敏 · © 2026"
+    },
+    "en": {
+      "_title": "Ke Yongqing · Technical Engineer (Cybersecurity / Commercial Cryptography)",
+      "_desc": "Ke Yongqing's personal resume site: 4 years of after-sales delivery experience in commercial cryptography and cybersecurity, specializing in project delivery and complex troubleshooting.",
+      "_og_title": "Ke Yongqing · Technical Engineer (Cybersecurity / Commercial Cryptography)",
+      "_og_desc": "Ke Yongqing's personal resume site: 4 years of after-sales delivery experience in commercial cryptography and cybersecurity, specializing in project delivery and complex troubleshooting.",
+      "_lang_name": "English",
+      "aria.nav": "Site navigation",
+      "aria.menu": "Open menu",
+      "email.hint": "Replace # with @",
+      "brand": "Ke Yongqing<em>·</em>Resume",
+      "nav.about": "About",
+      "nav.experience": "Experience",
+      "nav.projects": "Projects",
+      "nav.skills": "Skills",
+      "nav.education": "Education",
+      "nav.download": "Download Resume",
+      "hero.eyebrow": "Job Target: Technical Engineer (Cybersecurity / Commercial Cryptography)",
+      "hero.name": "Ke Yongqing",
+      "hero.role": "After-sales Engineer · 4 years in commercial cryptography & cybersecurity",
+      "hero.tagline": "Deep experience with commercial cryptography products and government/enterprise projects, covering delivery, operations and complex troubleshooting for critical industries such as government and finance.",
+      "hero.meta.location": "Based in Sanming",
+      "hero.meta.city": "Target city: Xiamen",
+      "hero.meta.years": "4 years of experience",
+      "hero.hint": "Contact info is masked to deter crawlers: replace # with @ in the email.",
+      "hero.cta.pdf": "Download PDF Resume",
+      "hero.cta.experience": "View Experience",
+      "avatar.alt": "Ke Yongqing avatar",
+      "avatar.cap": "4 yrs · Commercial Cryptography · Cybersecurity",
+      "stats.clients": "Govt & enterprise clients served",
+      "stats.accept": "Project acceptance rate",
+      "stats.banks": "Banking system integrations",
+      "stats.daily": "Daily transactions",
+      "stats.outage": "Core business outages",
+      "stats.efficiency": "Integration efficiency gain",
+      "about.title": "Strengths",
+      "about.p1": "4 years of after-sales delivery experience in commercial cryptography, with deep focus on cryptographic products and government/enterprise projects, specializing in <strong>project delivery and complex troubleshooting</strong>. Full-cycle capability from on-site deployment, integration and go-live to after-sales operations, keeping core business with zero outages in government and finance scenarios with extreme stability requirements.",
+      "about.p2": "Served as the single technical interface to clients, orchestrating multiple banking system integrations and annual maintenance; familiar with national cryptographic (SM) algorithms and certificate systems, able to quickly pinpoint root causes in real incidents.",
+      "about.tag1": "End-to-end project delivery",
+      "about.tag2": "Complex troubleshooting",
+      "about.tag3": "7×24 emergency support",
+      "about.tag4": "Banking system integration",
+      "about.tag5": "Technical documentation",
+      "about.tag6": "Xinchuang (IT application innovation) adaptation",
+      "terminal.aria": "Terminal-style profile",
+      "terminal.out2": "Ke Yongqing — After-sales Engineer · Cybersecurity / Commercial Cryptography",
+      "terminal.out4": "Linux · SM algorithms · Troubleshooting · API integration",
+      "terminal.out6": "4 years on duty · Core business <span class='ok'>0 outages</span>",
+      "exp.title": "Work Experience",
+      "exp.company": "Beijing Infosec Technologies Co., Ltd.",
+      "exp.role": "After-sales Engineer",
+      "exp.sub": "A leading listed company in the commercial cryptography industry, serving government and financial clients.",
+      "exp.b1": "Independently owned full life-cycle delivery and after-sales operations of national cryptography (SM) transformation projects in government and finance, serving 35+ clients with a 100% acceptance rate.",
+      "exp.b2": "Acted as the vendor interface orchestrating on-site implementation, integration, go-live and acceptance; delivered standardized documents and tools, improving integration efficiency by 30%.",
+      "exp.b3": "Managed annual maintenance and incident response for a bank's core signing and verification system with zero core-business outages, responding 30% faster than the company standard.",
+      "proj.title": "Projects",
+      "proj.t1": "Standard delivery",
+      "proj.t2": "Customized POC",
+      "proj.t3": "Maintenance & operations",
+      "proj.t4": "Typical troubleshooting",
+      "proj.p1.title": "Fuzhou Real-Estate Mortgage / Hospital-Bank / Social-Security-Bank Integration (Xinchuang)",
+      "proj.p1.role": "Vendor Project Lead",
+      "proj.p1.l1": "Led end-to-end delivery of 3 provincial benchmark government-finance projects, coordinating the Real Estate Center, Medical Insurance Bureau, Social Security Bureau and technical teams of multiple banks (<b>9</b> real-estate, <b>7</b> hospital-bank, <b>4</b> social-security-bank), planning and executing implementation.",
+      "proj.p1.l2": "Delivered standardized API manuals and reusable demos, guided client-side teams through cryptographic product integration; all 3 projects passed acceptance on the first attempt.",
+      "proj.p2.title": "Metrology Institute SM Application Integration Project",
+      "proj.p2.role": "Vendor Technical Lead",
+      "proj.p2.l1": "Gathered the client's customized requirements, worked with R&D on tailored signature/seal adaptation, and delivered to production after feasibility verification and contract signing.",
+      "proj.p3.title": "Bank Core Signing & Verification System Annual Maintenance",
+      "proj.p3.role": "After-sales Operations Engineer",
+      "proj.p3.l1": "Owned annual operations of cryptographic devices for a city commercial bank's core business system, covering RSA/SM2 certificate renewal, inspections, troubleshooting and 7×24 emergency response, supporting second-generation payment and digital RMB businesses with <b>100K+</b> daily transactions and zero core-business outages.",
+      "proj.p3.l2": "Participated in the bank's annual disaster-recovery switchover drill, on-site ensuring a smooth verification-service switch with zero incidents.",
+      "proj.p4.title": "Bank Load-Balancing Device Auto-Reboot Troubleshooting",
+      "proj.p4.role": "On-site Technical Support",
+      "proj.p4.l1": "The client's load-balancing device auto-rebooted in the early morning (business unaffected); collected logs and snapshots on site per the manual, escalated to R&D which identified a device memory fault; resolved after factory repair.",
+      "proj.p5.title": "Bank Verification API \"Signature Tampered\" Error Investigation",
+      "proj.p5.role": "Vendor Technical Lead",
+      "proj.p5.l1": "For the verification API <b>-100104</b> error, checked the signature value format, verification certificate, message/userid consistency, digest algorithm and Rawverify CA-list certificates item by item, finally pinpointing the root cause.",
+      "skills.title": "Core Skills",
+      "skills.c1.h": "Core Competencies",
+      "skills.c1.p": "End-to-end government/enterprise project delivery, SM product deployment & integration, troubleshooting & emergency response, technical documentation, customer training.",
+      "skills.c2.h": "Tools",
+      "skills.c2.p": "Linux/CentOS, Kylin OS, Wireshark, Postman/Apifox, cryptographic device operations.",
+      "skills.c3.h": "Technical Knowledge",
+      "skills.c3.p": "SM2/SM3 national algorithms, RSA certificate systems, TCP/IP protocol stack, REST API specifications; MLPS 2.0, commercial cryptography application security assessment, cryptographic devices/HSM, CA certificate systems, key management.",
+      "skills.c4.h": "Familiar With",
+      "skills.c4.p": "Cisco routing & switching, firewall/bastion host/WAF, basic Java development.",
+      "edu.title": "Education",
+      "edu.u.name": "Putian University · Communication Engineering (Full-time Bachelor)",
+      "edu.intern.name": "Beijing Topsec Network Security Technology Co., Ltd. — Fuzhou Branch",
+      "edu.intern.sub": "After-sales Engineer (Intern)",
+      "edu.intern.p": "Participated in security device deployment for a university in Nanping, configuring egress firewall, internet behavior management, WAF and other devices, assisting with acceptance.",
+      "footer.brand": "Ke Yongqing<em>·</em>Resume",
+      "footer.pdf": "Download PDF Resume",
+      "footer.emailHint": "replace # with @",
+      "footer.visits": "Site visits",
+      "footer.note": "Single-page resume site · Data per KeYongQing_Resume_2026.pdf · Contact masked · © 2026"
+    },
+    "vi": {
+      "_title": "Kha Vĩnh Khánh · Kỹ sư kỹ thuật (An ninh mạng / Mật mã thương mại)",
+      "_desc": "Trang CV cá nhân của Kha Vĩnh Khánh: 4 năm kinh nghiệm giao hàng hậu mãi trong lĩnh vực mật mã thương mại và an ninh mạng, chuyên về triển khai dự án và xử lý sự cố phức tạp.",
+      "_og_title": "Kha Vĩnh Khánh · Kỹ sư kỹ thuật (An ninh mạng / Mật mã thương mại)",
+      "_og_desc": "Trang CV cá nhân của Kha Vĩnh Khánh: 4 năm kinh nghiệm giao hàng hậu mãi trong lĩnh vực mật mã thương mại và an ninh mạng, chuyên về triển khai dự án và xử lý sự cố phức tạp.",
+      "_lang_name": "Tiếng Việt",
+      "aria.nav": "Điều hướng trang",
+      "aria.menu": "Mở menu",
+      "email.hint": "Thay # bằng @",
+      "brand": "Kha Vĩnh Khánh<em>·</em>CV",
+      "nav.about": "Giới thiệu",
+      "nav.experience": "Kinh nghiệm",
+      "nav.projects": "Dự án",
+      "nav.skills": "Kỹ năng",
+      "nav.education": "Học vấn",
+      "nav.download": "Tải CV",
+      "hero.eyebrow": "Mục tiêu nghề nghiệp: Kỹ sư kỹ thuật (An ninh mạng / Mật mã thương mại)",
+      "hero.name": "Kha Vĩnh Khánh",
+      "hero.role": "Kỹ sư hậu mãi · 4 năm kinh nghiệm mật mã thương mại & an ninh mạng",
+      "hero.tagline": "Kinh nghiệm sâu về sản phẩm mật mã thương mại và dự án khách hàng chính phủ/doanh nghiệp, bao gồm triển khai, vận hành và xử lý sự cố phức tạp, phục vụ các ngành trọng yếu như chính phủ và tài chính.",
+      "hero.meta.location": "Đang ở Tam Minh",
+      "hero.meta.city": "Thành phố mong muốn: Hạ Môn",
+      "hero.meta.years": "4 năm kinh nghiệm",
+      "hero.hint": "Thông tin liên hệ được che chắn để chống thu thập dữ liệu: thay # bằng @ trong email.",
+      "hero.cta.pdf": "Tải CV (PDF)",
+      "hero.cta.experience": "Xem kinh nghiệm làm việc",
+      "avatar.alt": "Ảnh đại diện Kha Vĩnh Khánh",
+      "avatar.cap": "4 năm · Mật mã thương mại · An ninh mạng",
+      "stats.clients": "Khách hàng chính phủ & doanh nghiệp",
+      "stats.accept": "Tỷ lệ nghiệm thu dự án",
+      "stats.banks": "Ngân hàng kết nối hệ thống",
+      "stats.daily": "Giao dịch trung bình mỗi ngày",
+      "stats.outage": "Gián đoạn nghiệp vụ lõi",
+      "stats.efficiency": "Hiệu quả kết nối tăng",
+      "about.title": "Điểm mạnh",
+      "about.p1": "4 năm kinh nghiệm giao hàng hậu mãi trong ngành mật mã thương mại, tập trung sâu vào sản phẩm mật mã và dự án chính phủ/doanh nghiệp, chuyên về <strong>triển khai dự án và xử lý sự cố phức tạp</strong>. Có năng lực toàn trình từ triển khai tại chỗ, tích hợp và đưa vào vận hành đến hậu mãi, giữ nghiệp vụ lõi không gián đoạn trong các môi trường chính phủ và tài chính đòi hỏi độ ổn định cực cao.",
+      "about.p2": "Đóng vai trò đầu mối kỹ thuật phía khách hàng, điều phối tích hợp nhiều hệ thống ngân hàng và bảo trì định kỳ; am hiểu thuật toán mật mã quốc gia (SM) và hệ thống chứng chỉ, có thể nhanh chóng xác định nguyên nhân gốc trong sự cố thực tế.",
+      "about.tag1": "Giao hàng dự án toàn trình",
+      "about.tag2": "Xử lý sự cố phức tạp",
+      "about.tag3": "Hỗ trợ khẩn cấp 7×24",
+      "about.tag4": "Tích hợp hệ thống ngân hàng",
+      "about.tag5": "Viết tài liệu kỹ thuật",
+      "about.tag6": "Thích ứng Tín Sáng (đổi mới ứng dụng CNTT)",
+      "terminal.aria": "Hồ sơ phong cách terminal",
+      "terminal.out2": "Kha Vĩnh Khánh — Kỹ sư hậu mãi · An ninh mạng / Mật mã thương mại",
+      "terminal.out4": "Linux · Thuật toán mật mã quốc gia · Xử lý sự cố · Tích hợp API",
+      "terminal.out6": "4 years on duty · Nghiệp vụ lõi <span class='ok'>0 gián đoạn</span>",
+      "exp.title": "Kinh nghiệm làm việc",
+      "exp.company": "Công ty TNHH Công nghệ Infosec Bắc Kinh",
+      "exp.role": "Kỹ sư hậu mãi",
+      "exp.sub": "Doanh nghiệp niêm yết hàng đầu trong ngành mật mã thương mại, phục vụ khách hàng chính phủ và tài chính.",
+      "exp.b1": "Độc lập đảm nhiệm giao hàng toàn vòng đời và vận hành hậu mãi các dự án chuyển đổi mật mã quốc gia (SM) trong lĩnh vực chính phủ và tài chính, phục vụ hơn 35 khách hàng, tỷ lệ nghiệm thu 100%.",
+      "exp.b2": "Là đầu mối phía hãng điều phối toàn bộ quy trình triển khai tại chỗ, tích hợp, đưa vào vận hành đến nghiệm thu; bàn giao tài liệu và công cụ chuẩn hóa, tăng hiệu quả kết nối 30%.",
+      "exp.b3": "Quản lý bảo trì định kỳ và ứng phó sự cố cho hệ thống ký số và xác thực lõi của ngân hàng, nghiệp vụ lõi không gián đoạn, thời gian ứng phó nhanh hơn tiêu chuẩn công ty 30%.",
+      "proj.title": "Dự án tiêu biểu",
+      "proj.t1": "Giao hàng chuẩn",
+      "proj.t2": "POC tùy chỉnh",
+      "proj.t3": "Bảo trì & vận hành",
+      "proj.t4": "Xử lý sự cố điển hình",
+      "proj.p1.title": "Kết nối trực tiếp thế chấp bất động sản Phúc Châu / Bệnh viện–Ngân hàng / Bảo hiểm xã hội–Ngân hàng (Tín Sáng)",
+      "proj.p1.role": "Trưởng dự án phía hãng",
+      "proj.p1.l1": "Điều phối giao hàng toàn trình 3 dự án mẫu cấp tỉnh về chính phủ–tài chính, kết nối Trung tâm bất động sản, Cục Bảo hiểm y tế, Cục Bảo hiểm xã hội và đội kỹ thuật nhiều ngân hàng (bất động sản <b>9</b>, bệnh viện–ngân hàng <b>7</b>, bảo hiểm xã hội–ngân hàng <b>4</b>), lập và triển khai kế hoạch thực hiện.",
+      "proj.p1.l2": "Bàn giao tài liệu API chuẩn hóa và Demo tái sử dụng, hướng dẫn phía khách hàng hoàn tất tích hợp sản phẩm mật mã; cả 3 dự án đều nghiệm thu ngay lần đầu.",
+      "proj.p2.title": "Dự án tích hợp ứng dụng mật mã quốc gia cho Viện Đo lường",
+      "proj.p2.role": "Trưởng kỹ thuật phía hãng",
+      "proj.p2.l1": "Tiếp nhận yêu cầu tùy chỉnh của khách hàng, phối hợp R&D hoàn tất thích ứng chức năng ký/đóng dấu điện tử, sau khi kiểm chứng khả thi mới ký hợp đồng và đưa vào vận hành.",
+      "proj.p3.title": "Bảo trì định kỳ hệ thống ký số & xác thực lõi ngân hàng",
+      "proj.p3.role": "Kỹ sư vận hành hậu mãi",
+      "proj.p3.l1": "Đảm nhiệm vận hành định kỳ thiết bị mật mã cho hệ thống nghiệp vụ lõi của một ngân hàng thương mại thành phố, bao gồm thay chứng chỉ RSA/SM2, kiểm tra định kỳ, xử lý sự cố và ứng phó khẩn cấp 7×24, hỗ trợ thanh toán thế hệ 2 và đồng Nhân dân tệ số, trung bình <b>100K+</b> giao dịch/ngày, nghiệp vụ lõi không gián đoạn.",
+      "proj.p3.l2": "Tham gia diễn tập chuyển đổi trung tâm dự phòng thảm họa hằng năm của ngân hàng, túc trực tại chỗ bảo đảm nghiệp vụ xác thực chuyển đổi mượt mà, không có sự cố chuyển đổi.",
+      "proj.p4.title": "Xử lý sự cố thiết bị cân bằng tải ngân hàng tự khởi động lại",
+      "proj.p4.role": "Hỗ trợ kỹ thuật tại chỗ",
+      "proj.p4.l1": "Thiết bị cân bằng tải của khách hàng tự khởi động lại lúc rạng sáng (nghiệp vụ không gián đoạn); đến hiện trường thu thập log và snapshot theo tài liệu, chuyển R&D xác định là lỗi bộ nhớ thiết bị, sửa chữa tại nhà máy là xong.",
+      "proj.p5.title": "Điều tra lỗi \"chữ ký bị giả mạo\" của API xác thực ngân hàng",
+      "proj.p5.role": "Trưởng kỹ thuật phía hãng",
+      "proj.p5.l1": "Với lỗi API xác thực <b>-100104</b>, lần lượt kiểm tra định dạng giá trị chữ ký, chứng chỉ xác thực, sự khớp giữa bản gốc và userid, thuật toán băm và chứng chỉ danh sách CA Rawverify, cuối cùng xác định chính xác nguyên nhân gốc.",
+      "skills.title": "Kỹ năng chính",
+      "skills.c1.h": "Năng lực cốt lõi",
+      "skills.c1.p": "Giao hàng dự án chính phủ/doanh nghiệp toàn trình, triển khai & tích hợp sản phẩm mật mã SM, xử lý sự cố & ứng phó khẩn cấp, viết tài liệu kỹ thuật, đào tạo khách hàng.",
+      "skills.c2.h": "Công cụ thành thạo",
+      "skills.c2.p": "Linux/CentOS, Kylin, Wireshark, Postman/Apifox, vận hành thiết bị mật mã.",
+      "skills.c3.h": "Kiến thức kỹ thuật",
+      "skills.c3.p": "Thuật toán quốc gia SM2/SM3, hệ thống chứng chỉ RSA, ngăn xếp giao thức TCP/IP, chuẩn REST API; bảo vệ cấp độ 2.0, đánh giá an toàn ứng dụng mật mã thương mại, thiết bị mật mã/HSM, hệ thống chứng chỉ CA, quản lý khóa.",
+      "skills.c4.h": "Am hiểu",
+      "skills.c4.p": "Định tuyến & chuyển mạch Cisco, tường lửa/máy chủ bastion/WAF, lập trình Java cơ bản.",
+      "edu.title": "Học vấn",
+      "edu.u.name": "Đại học Putian · Kỹ thuật truyền thông (Cử nhân chính quy)",
+      "edu.intern.name": "Công ty TNHH Công nghệ An ninh mạng Topsec Bắc Kinh – Chi nhánh Phúc Châu",
+      "edu.intern.sub": "Kỹ sư hậu mãi (Thực tập sinh)",
+      "edu.intern.p": "Tham gia triển khai thiết bị an ninh cho một trường đại học tại Nam Bình, cấu hình tường lửa biên, quản lý hành vi internet, WAF..., hỗ trợ hoàn tất nghiệm thu.",
+      "footer.brand": "Kha Vĩnh Khánh<em>·</em>CV",
+      "footer.pdf": "Tải CV (PDF)",
+      "footer.emailHint": "thay # bằng @",
+      "footer.visits": "Lượt truy cập",
+      "footer.note": "Trang CV một trang · Dữ liệu theo KeYongQing_Resume_2026.pdf · Thông tin liên hệ đã được che chắn · © 2026"
+    }
+  };
+  var LANGS = ["zh","en","vi"];
+  var current = "zh";
+
+  function detect(){
+    var m = (location.search || "").match(/[?&]lang=(zh|en|vi)/i);
+    if (m) return m[1].toLowerCase();
+    try {
+      var s = localStorage.getItem("kyq-lang");
+      if (LANGS.indexOf(s) > -1) return s;
+    } catch(e){}
+    return "zh";
+  }
+
+  function apply(lang){
+    current = lang;
+    var dict = I18N[lang] || I18N.zh;
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+
+    var els = document.querySelectorAll("[data-i18n]");
+    for (var i=0;i<els.length;i++){
+      var k = els[i].getAttribute("data-i18n");
+      if (dict[k] != null) els[i].textContent = dict[k];
+    }
+    var htmlEls = document.querySelectorAll("[data-i18n-html]");
+    for (var j=0;j<htmlEls.length;j++){
+      var hk = htmlEls[j].getAttribute("data-i18n-html");
+      if (dict[hk] != null) htmlEls[j].innerHTML = dict[hk];
+    }
+    var titleEls = document.querySelectorAll("[data-i18n-title]");
+    for (var t=0;t<titleEls.length;t++){
+      var tk = titleEls[t].getAttribute("data-i18n-title");
+      if (dict[tk] != null) titleEls[t].setAttribute("title", dict[tk]);
+    }
+    var altEls = document.querySelectorAll("[data-i18n-alt]");
+    for (var a=0;a<altEls.length;a++){
+      var ak = altEls[a].getAttribute("data-i18n-alt");
+      if (dict[ak] != null) altEls[a].setAttribute("alt", dict[ak]);
+    }
+    var ariaEls = document.querySelectorAll("[data-i18n-aria]");
+    for (var r=0;r<ariaEls.length;r++){
+      var rk = ariaEls[r].getAttribute("data-i18n-aria");
+      if (dict[rk] != null) ariaEls[r].setAttribute("aria-label", dict[rk]);
+    }
+
+    if (dict["_title"]) document.title = dict["_title"];
+    var desc = document.querySelector("meta[name='description']");
+    if (desc && dict["_desc"]) desc.setAttribute("content", dict["_desc"]);
+    var ogt = document.querySelector("meta[property='og:title']");
+    if (ogt && dict["_og_title"]) ogt.setAttribute("content", dict["_og_title"]);
+    var ogd = document.querySelector("meta[property='og:description']");
+    if (ogd && dict["_og_desc"]) ogd.setAttribute("content", dict["_og_desc"]);
+    var ogl = document.querySelector("meta[property='og:locale']");
+    if (ogl) ogl.setAttribute("content", lang === "zh" ? "zh_CN" : lang === "en" ? "en_US" : "vi_VN");
+
+    var lb = document.getElementById("langBtnText");
+    if (lb) lb.textContent = dict["_lang_name"] || lang.toUpperCase();
+
+    try { localStorage.setItem("kyq-lang", lang); } catch(e){}
+  }
+
+  function setActive(){
+    var opts = document.querySelectorAll(".lang-opt");
+    for (var i=0;i<opts.length;i++){
+      opts[i].classList.toggle("active", opts[i].getAttribute("data-lang") === current);
+    }
+  }
+
+  apply(detect());
+  setActive();
+
+  var langBtn = document.getElementById("langBtn");
+  var langMenu = document.getElementById("langMenu");
+  if (langBtn && langMenu) {
+    langBtn.addEventListener("click", function(e){
+      e.stopPropagation();
+      var open = langMenu.classList.toggle("open");
+      langBtn.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    nav.addEventListener('click', function(e){
-      if (e.target.tagName === 'A') {
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
+    langMenu.addEventListener("click", function(e){
+      e.stopPropagation();
+      var t = e.target;
+      if (t && t.getAttribute && t.getAttribute("data-lang")) {
+        apply(t.getAttribute("data-lang"));
+        setActive();
+        langMenu.classList.remove("open");
+        langBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.addEventListener("click", function(){
+      langMenu.classList.remove("open");
+      langBtn.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  var btn = document.getElementById("menuBtn");
+  var nav = document.getElementById("siteNav");
+  if (btn && nav) {
+    btn.addEventListener("click", function(){
+      var open = nav.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    nav.addEventListener("click", function(e){
+      if (e.target.tagName === "A") {
+        nav.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
       }
     });
   }
 })();
 </script>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
