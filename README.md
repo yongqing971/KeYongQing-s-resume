@@ -19,7 +19,7 @@ A single-page static resume site for a product-delivery & after-sales engineer i
 ├── robots.txt          # 全站禁止搜索引擎收录（防爬联系方式）
 └── assets/
     ├── avatar.jpg      # 头像（皮卡丘）
-    ├── resume.pdf      # PDF 简历原件（下载附件，数据以此为准）
+    ├── 柯永庆_简历.pdf  # PDF 简历原件（下载附件，数据以此为准）
     ├── css/
     │   └── style.css   # 全站样式：黑白新拟态 token、深浅双主题、响应式、打印样式
     └── js/
