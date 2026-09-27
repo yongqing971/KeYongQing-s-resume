@@ -205,8 +205,8 @@ section{scroll-margin-top:84px;}
 /* 终端卡 */
 .terminal{
   background:var(--term-bg);border-radius:14px;overflow:hidden;
-  font-family:var(--font-mono);font-size:12.5px;line-height:1.8;
-  box-shadow:var(--neu-soft);
+  font-family:var(--font-mono);font-size:12px;line-height:1.62;
+  box-shadow:var(--neu-soft);cursor:pointer;user-select:none;
 }
 .term-bar{display:flex;align-items:center;gap:6px;padding:9px 13px;border-bottom:1px solid rgba(255,255,255,.07);}
 .term-bar i{width:10px;height:10px;border-radius:50%;display:block;}
@@ -214,7 +214,7 @@ section{scroll-margin-top:84px;}
 .term-bar i:nth-child(2){background:#F5BE4F;}
 .term-bar i:nth-child(3){background:#56C596;}
 .term-bar .title{margin-left:8px;color:#6E7B78;font-size:11.5px;}
-.term-body{padding:14px 16px;color:var(--term-ink);min-height:178px;}
+.term-body{padding:10px 14px;color:var(--term-ink);}
 .term-body .ln{color:#5C6A66;user-select:none;width:20px;display:inline-block;}
 .term-body .ps1{color:var(--term-ok);}
 .term-body .cmd{color:#E7EEEB;}
@@ -222,7 +222,7 @@ section{scroll-margin-top:84px;}
 .term-body .ok{color:var(--term-ok);}
 .term-body .caret{display:inline-block;width:7px;height:13px;background:var(--term-ok);vertical-align:-2px;animation:blink 1s steps(1) infinite;}
 @keyframes blink{50%{opacity:0;}}
-.term-line{min-height:22px;}
+.term-line{min-height:20px;}
 
 /* ===== 数据条 ===== */
 .stats{

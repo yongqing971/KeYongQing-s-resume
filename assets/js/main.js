@@ -97,6 +97,12 @@
     var pn = document.getElementById("pdfNote");
     if (pn) pn.textContent = pdf.name;
     try { localStorage.setItem("kyq-lang", lang); } catch (e) {}
+    /* 语言切换时终端按新语言重播 */
+    if (document.getElementById("termBody")) {
+      runTerminal();
+      var t = document.querySelector(".terminal");
+      if (t) t.title = dict["terminal.restart"] || "click to replay";
+    }
   }
 
   var langBtns = document.querySelectorAll(".lang-opt[data-lang]");
@@ -177,7 +183,6 @@
     var cmds = getCmd(I18N, currentLang);
     var lineIndex = 0, charIndex = 0, currentLine = null;
     var interval = reduce ? 1 : 28;
-    var busy = false;
 
     function buildLine(cmd, lang) {
       var ln = document.createElement("div");
@@ -230,8 +235,6 @@
       charIndex = 0;
       var ln = buildLine(cmd);
       body.appendChild(ln);
-      if (busy) return;
-      busy = true;
       setTimeout(nextChar, reduce ? 10 : 300);
     }
     body.innerHTML = "";
@@ -310,5 +313,9 @@
   /* ================= 初始化 ================= */
   initTheme();
   applyLang(detectLang());
-  runTerminal();
+  var termEl = document.querySelector(".terminal");
+  if (termEl) {
+    termEl.addEventListener("click", runTerminal);
+    termEl.title = (I18N[currentLang] || I18N.zh || {})["terminal.restart"] || "click to replay";
+  }
 })();
