@@ -147,7 +147,7 @@ window.I18N = {
     "footer.emailHint": "# 替换为 @",
     "footer.pdf": "下载 PDF 简历",
     "footer.visits": "本站访问量",
-    "footer.note": "单页简历网站 · 数据口径以《柯永庆_简历.pdf》为准 · 联系方式已脱敏 · 禁止搜索引擎收录 · © 2026"
+    "footer.note": "单页简历网站 · 数据口径以《<span id=\"pdfNote\">柯永庆_简历.pdf</span>》为准 · 联系方式已脱敏 · 禁止搜索引擎收录 · © 2026"
   },
   "en": {
     "_title": "Ke Yongqing · Commercial Cryptography Delivery / After-sales Engineer",
@@ -296,7 +296,7 @@ window.I18N = {
     "footer.emailHint": "replace # with @",
     "footer.pdf": "Download PDF Resume",
     "footer.visits": "Site visits",
-    "footer.note": "Single-page resume site · Data per KeYongQing_Resume.pdf · Contact masked · Search engines blocked · © 2026"
+    "footer.note": "Single-page resume site · Data per <span id=\"pdfNote\">Ke_Yongqing_Resume_EN.pdf</span> · Contact masked · Search engines blocked · © 2026"
   },
   "vi": {
     "_title": "Kha Vĩnh Khánh · Kỹ sư triển khai / hậu mãi mật mã thương mại",
@@ -445,6 +445,6 @@ window.I18N = {
     "footer.emailHint": "thay # bằng @",
     "footer.pdf": "Tải CV (PDF)",
     "footer.visits": "Lượt truy cập",
-    "footer.note": "Trang CV một trang · Dữ liệu theo KeYongQing_Resume.pdf · Thông tin liên hệ đã che chắn · Chặn công cụ tìm kiếm · © 2026"
+    "footer.note": "Trang CV một trang · Dữ liệu theo <span id=\"pdfNote\">Ke_Yongqing_Resume_VI.pdf</span> · Thông tin liên hệ đã che chắn · Chặn công cụ tìm kiếm · © 2026"
   }
 };

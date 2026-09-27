@@ -19,7 +19,9 @@ A single-page static resume site for a product-delivery & after-sales engineer i
 ├── robots.txt          # 全站禁止搜索引擎收录（防爬联系方式）
 └── assets/
     ├── avatar.jpg      # 头像（皮卡丘）
-    ├── 柯永庆_简历.pdf  # PDF 简历原件（下载附件，数据以此为准）
+    ├── 柯永庆_简历.pdf          # 中文简历 PDF（中文界面下下载）
+    ├── Ke_Yongqing_Resume_EN.pdf  # 英文简历 PDF（English 界面下下载）
+    ├── Ke_Yongqing_Resume_VI.pdf  # 越南语简历 PDF（Tiếng Việt 界面下下载）
     ├── css/
     │   └── style.css   # 全站样式：黑白新拟态 token、深浅双主题、响应式、打印样式
     └── js/
@@ -50,8 +52,10 @@ A single-page static resume site for a product-delivery & after-sales engineer i
 
 | 语言 | 切换方式 |
 | --- | --- |
-| 中文 | 顶栏「中文」，或 URL 加 `?lang=zh` |
-| English | 顶栏「EN」，或 URL 加 `?lang=en` |
-| Tiếng Việt | 顶栏「VI」，或 URL 加 `?lang=vi` |
+| 中文 | 顶栏语言下拉框「中文」，或 URL 加 `?lang=zh` |
+| English | 顶栏语言下拉框「English」，或 URL 加 `?lang=en` |
+| Tiếng Việt | 顶栏语言下拉框「Tiếng Việt」，或 URL 加 `?lang=vi` |
+
+> 下载简历随界面语言联动：中文 → `柯永庆_简历.pdf`，English → `Ke_Yongqing_Resume_EN.pdf`，Tiếng Việt → `Ke_Yongqing_Resume_VI.pdf`；页脚声明中的文件名同步显示。
 
 > 英文 / 越南语翻译为初稿，如需更正请基于《三语翻译对照表》校对后更新 `assets/js/i18n.js` 字典。

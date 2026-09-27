@@ -82,6 +82,20 @@
     }
     var lb = document.getElementById("langBtnText");
     if (lb) lb.textContent = dict["_lang_name"] || lang.toUpperCase();
+    /* 下载简历随界面语言联动 */
+    var pdfs = {
+      zh: { file: "./assets/柯永庆_简历.pdf", name: "柯永庆_简历.pdf" },
+      en: { file: "./assets/Ke_Yongqing_Resume_EN.pdf", name: "Ke_Yongqing_Resume_EN.pdf" },
+      vi: { file: "./assets/Ke_Yongqing_Resume_VI.pdf", name: "Ke_Yongqing_Resume_VI.pdf" }
+    };
+    var pdf = pdfs[lang] || pdfs.zh;
+    var dl = document.querySelectorAll("a[download]");
+    for (i = 0; i < dl.length; i++) {
+      dl[i].setAttribute("href", pdf.file);
+      dl[i].setAttribute("download", pdf.name);
+    }
+    var pn = document.getElementById("pdfNote");
+    if (pn) pn.textContent = pdf.name;
     try { localStorage.setItem("kyq-lang", lang); } catch (e) {}
   }
 
