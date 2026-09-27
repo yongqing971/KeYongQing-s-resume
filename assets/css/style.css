@@ -284,6 +284,12 @@ section{scroll-margin-top:84px;}
   transition:color .15s,border-color .15s;
 }
 .kw-tag:hover{color:var(--accent-ink);border-color:var(--accent);}
+.kw-lv{
+  font-size:11.5px;font-weight:700;color:var(--accent-ink);
+  background:var(--accent-soft);border:1px solid var(--accent);
+  border-radius:999px;padding:3px 9px;flex:none;letter-spacing:.5px;
+}
+.ts-band{margin:-12px 0 26px;}
 .scene-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 .scene-card{
   background:var(--card);border-radius:var(--radius);padding:22px 24px;
