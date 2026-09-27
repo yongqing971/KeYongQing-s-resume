@@ -80,6 +80,8 @@
     for (i = 0; i < opts.length; i++) {
       opts[i].classList.toggle("active", opts[i].getAttribute("data-lang") === lang);
     }
+    var lb = document.getElementById("langBtnText");
+    if (lb) lb.textContent = dict["_lang_name"] || lang.toUpperCase();
     try { localStorage.setItem("kyq-lang", lang); } catch (e) {}
   }
 
@@ -87,6 +89,26 @@
   for (var li = 0; li < langBtns.length; li++) {
     langBtns[li].addEventListener("click", function () {
       applyLang(this.getAttribute("data-lang"));
+    });
+  }
+
+  /* 语言下拉框展开/收起 */
+  var langBtn = document.getElementById("langBtn");
+  var langMenu = document.getElementById("langMenu");
+  if (langBtn && langMenu) {
+    langBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = langMenu.classList.toggle("open");
+      langBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    langMenu.addEventListener("click", function (e) {
+      e.stopPropagation();
+      langMenu.classList.remove("open");
+      langBtn.setAttribute("aria-expanded", "false");
+    });
+    document.addEventListener("click", function () {
+      langMenu.classList.remove("open");
+      langBtn.setAttribute("aria-expanded", "false");
     });
   }
 

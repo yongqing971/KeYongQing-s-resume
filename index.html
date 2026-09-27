@@ -28,10 +28,17 @@
       <a href="#trouble" data-i18n="nav.trouble">故障处理</a>
       <a href="#experience" data-i18n="nav.experience">工作经历</a>
       <a href="#education" data-i18n="nav.education">教育背景</a>
-      <div class="lang-group" role="group" aria-label="语言选择">
-        <button class="lang-btn lang-opt" data-lang="zh" type="button">中文</button>
-        <button class="lang-btn lang-opt" data-lang="en" type="button">EN</button>
-        <button class="lang-btn lang-opt" data-lang="vi" type="button">VI</button>
+      <div class="lang-wrap">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="语言选择" data-i18n-aria="aria.lang">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="langBtnText">中文</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu">
+          <li><button class="lang-opt" data-lang="zh" type="button">中文</button></li>
+          <li><button class="lang-opt" data-lang="en" type="button">English</button></li>
+          <li><button class="lang-opt" data-lang="vi" type="button">Tiếng Việt</button></li>
+        </ul>
       </div>
       <a class="btn" href="./assets/resume.pdf" download="柯永庆_简历_2026_售后.pdf" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
