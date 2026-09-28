@@ -278,6 +278,12 @@
     });
   }
 
+  /* ================= 邮箱 mailto（防爬虫：显示脱敏，JS 动态设置真实 href） ================= */
+  var mailLinks = document.querySelectorAll(".mail-link");
+  for (var mi = 0; mi < mailLinks.length; mi++) {
+    mailLinks[mi].href = "mailto:" + mailLinks[mi].getAttribute("data-mail");
+  }
+
   /* ================= 滚动渐显 ================= */
   var revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
