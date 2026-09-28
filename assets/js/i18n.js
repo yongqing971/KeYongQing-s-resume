@@ -95,7 +95,7 @@ window.I18N = {
 
     "cap.s1.k": "01",
     "cap.s1.t": "现场实施交付",
-    "cap.s1.d": "独立完成设备上架、网络配置、证书导入、服务部署全流程；独立出差厦门、宁德、海口、三亚、珠海等地实施。",
+    "cap.s1.d": "独立完成设备上架、网络配置、证书导入、服务部署全流程；可独立出差、覆盖多地客户现场实施。",
     "cap.s2.k": "02",
     "cap.s2.t": "系统运维保障",
     "cap.s2.d": "建立 10+ 客户季度 / 半年 / 年度巡检维保体系，年度现场巡检 40 次，7×24 应急响应与生产变更值守。",
@@ -295,7 +295,7 @@ window.I18N = {
 
     "cap.s1.k": "01",
     "cap.s1.t": "On-site Delivery",
-    "cap.s1.d": "Independently completed device racking, network configuration, certificate import and service deployment end to end; traveled for delivery to Xiamen, Ningde, Haikou, Sanya, Zhuhai and more.",
+    "cap.s1.d": "Independently completed device racking, network configuration, certificate import and service deployment end to end; able to travel solo for on-site delivery across multiple regions.",
     "cap.s2.k": "02",
     "cap.s2.t": "Operations & Maintenance",
     "cap.s2.d": "Built quarterly / semi-annual / annual inspection & maintenance systems for 10+ clients, 40 on-site inspections per year, 7×24 emergency response and production change duty.",
@@ -493,7 +493,7 @@ window.I18N = {
 
     "cap.s1.k": "01",
     "cap.s1.t": "Triển khai tại chỗ",
-    "cap.s1.d": "Độc lập hoàn tất lắp đặt thiết bị, cấu hình mạng, nhập chứng chỉ và triển khai dịch vụ từ đầu đến cuối; công tác triển khai tại Hạ Môn, Ninh Đức, Hải Khẩu, Tam Á, Chu Hải...",
+    "cap.s1.d": "Độc lập hoàn tất lắp đặt thiết bị, cấu hình mạng, nhập chứng chỉ và triển khai dịch vụ từ đầu đến cuối; có thể công tác độc lập, triển khai tại hiện trường khách hàng nhiều khu vực.",
     "cap.s2.k": "02",
     "cap.s2.t": "Vận hành & bảo trì",
     "cap.s2.d": "Xây dựng hệ thống kiểm tra định kỳ quý / nửa năm / năm cho 10+ khách hàng, 40 lần kiểm tra hiện trường mỗi năm, ứng phó khẩn cấp 7×24 và trực biến động sản xuất.",
