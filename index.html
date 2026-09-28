@@ -279,7 +279,7 @@
         <h3 data-i18n="proj.p1.title">不动产抵押直连平台</h3>
         <span class="proj-role" data-i18n="proj.p1.role">核心实施工程师</span>
         <ul>
-          <li data-i18n="proj.p1.l1">部署 NetSign 签名验签、NetSafe 网关、NetCert 证书体系全栈密码平台，设计银行 ↔ 中心签名加密双向接口逻辑。</li>
+          <li data-i18n="proj.p1.l1">部署签名验签服务器、银企直连网关、CA 证书体系全栈密码平台，设计银行 ↔ 中心签名加密双向接口逻辑。</li>
           <li data-i18n="proj.p1.l2">完成 16+ 家银行设备上架、证书导入、网关配置与联调，持续半年 / 年度集中巡检。</li>
         </ul>
         <div class="proj-tags"><span data-i18n="proj.p1.tags">国密签名验签 · 数字信封 · RA/OCSP 证书体系 · 跨银行联调</span></div>
@@ -287,10 +287,10 @@
 
       <article class="proj-card reveal" data-cat="gov">
         <div class="proj-top"><span class="proj-cat" data-i18n="proj.filter.gov">政务</span><span class="proj-year">2023 – 2024</span></div>
-        <h3 data-i18n="proj.p2.title">某省医保局 CSSP 密码服务平台</h3>
+        <h3 data-i18n="proj.p2.title">某省医保局密码服务中台</h3>
         <span class="proj-role" data-i18n="proj.p2.role">实施 / 运维 / 验收支持</span>
         <ul>
-          <li data-i18n="proj.p2.l1">从测试部署到二期终验全程参与，完成 AB 中心 CSSP 部署、电子处方 / 电子签章对接、信创达梦数据库适配。</li>
+          <li data-i18n="proj.p2.l1">从测试部署到二期终验全程参与，完成 AB 中心密码服务中台部署、电子处方 / 电子签章对接、信创达梦数据库适配。</li>
           <li data-i18n="proj.p2.l2">处理 NetSeal 内存泄漏、密钥同步致证书丢失、p10 密钥上限等关键故障，配合多轮密评测评。</li>
         </ul>
         <div class="proj-tags"><span data-i18n="proj.p2.tags">密码服务平台 · 信创适配 · 电子处方 · 密评整改</span></div>
@@ -302,7 +302,7 @@
         <span class="proj-role" data-i18n="proj.p3.role">主力交付工程师</span>
         <ul>
           <li data-i18n="proj.p3.l1">SSL设备 大版本升级与配置迁移；NetSeal 信创电子签章生产上线（麒麟 V10）。</li>
-          <li data-i18n="proj.p3.l2">CSSP 新银联前置定制对接（CUPS 报文 SM4 加密、CFCA SM2 验签）；CNG 多平台适配攻坚。</li>
+          <li data-i18n="proj.p3.l2">密码服务中台新银联前置定制对接（CUPS 报文 SM4 加密、CFCA SM2 验签）；浏览器签名控件多平台适配攻坚。</li>
         </ul>
         <div class="proj-tags"><span data-i18n="proj.p3.tags">信创全栈 · SSL设备升级 · 报文国密改造 · 浏览器签名控件适配</span></div>
       </article>
@@ -312,7 +312,7 @@
         <h3 data-i18n="proj.p4.title">某城商行 4 年维保与信创替换</h3>
         <span class="proj-role" data-i18n="proj.p4.role">专属售后 / 维保负责人</span>
         <ul>
-          <li data-i18n="proj.p4.l1">两地签名服务器 NetSign 替换（HA 主备、bond 网卡、资源同步、夜间值守）；SSL设备 信创替换。</li>
+          <li data-i18n="proj.p4.l1">两地签名服务器替换（HA 主备、bond 网卡、资源同步、夜间值守）；SSL设备 信创替换。</li>
           <li data-i18n="proj.p4.l2">连续 4 年维保，支撑数币、年终结算等关键业务，配套应急预案与维护手册体系。</li>
         </ul>
         <div class="proj-tags"><span data-i18n="proj.p4.tags">双机 HA · 夜间割接 · 应急预案 · 文档体系</span></div>
@@ -364,12 +364,12 @@
     <div class="trb-cases">
       <div class="trb-card reveal">
         <span class="yr" data-i18n="trb.c1.yr">2026 · 某公安</span>
-        <h4 data-i18n="trb.c1.t">CSSP 平台部署期管理台无法访问</h4>
-        <p data-i18n="trb.c1.d">CCypher 上装 CSSP 时 Web 管理台异常，逐层核查服务与依赖，定位为底层 Python 进程未随服务拉起；手动启动恢复后固化开机自启检查项，后续部署未再复发。</p>
+        <h4 data-i18n="trb.c1.t">密码服务中台部署期管理台无法访问</h4>
+        <p data-i18n="trb.c1.d">云密码机上装密码服务中台时 Web 管理台异常，逐层核查服务与依赖，定位为底层 Python 进程未随服务拉起；手动启动恢复后固化开机自启检查项，后续部署未再复发。</p>
       </div>
       <div class="trb-card reveal">
         <span class="yr" data-i18n="trb.c2.yr">2025 · 某省联社</span>
-        <h4 data-i18n="trb.c2.t">生产 MAuth 客户端补丁后无法下证</h4>
+        <h4 data-i18n="trb.c2.t">生产移动认证客户端补丁后无法下证</h4>
         <p data-i18n="trb.c2.d">补丁升级后客户端无法下载证书，对比生产/测试环境定位为测试 beta 包误投生产；统一版本并重新签发后业务恢复，同步规范补丁发布与验证流程。</p>
       </div>
       <div class="trb-card reveal">
