@@ -194,18 +194,16 @@ section{scroll-margin-top:84px;}
 /* 头像卡 */
 .avatar-card{
   background:var(--card);border-radius:var(--radius);
-  padding:6px;
+  padding:12px 12px 8px;
   box-shadow:var(--neu-soft);
-  max-width:90px;justify-self:start;
 }
 .avatar-card img{
   display:block;width:100%;border-radius:12px;
   aspect-ratio:3/4;object-fit:cover;
 }
 .avatar-cap{
-  display:flex;align-items:center;justify-content:center;
-  flex-wrap:wrap;row-gap:2px;gap:4px;
-  padding:6px 2px 2px;font-size:10px;line-height:1.35;color:var(--ink-2);
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:9px 0 4px;font-size:12.5px;color:var(--ink-2);
 }
 .avatar-cap .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
 /* 终端卡 */
@@ -482,7 +480,7 @@ section{scroll-margin-top:84px;}
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:30px;}
   .hero-side{max-width:560px;}
-  .hero-side .avatar-card{width:100%;max-width:120px;justify-self:center;}
+  .hero-side .avatar-card{width:100%;max-width:360px;justify-self:center;}
   .stats{grid-template-columns:repeat(3,1fr);}
   .stat:nth-child(n+4)::before{display:none;}
   .stat:nth-child(4)::before{display:none;}
