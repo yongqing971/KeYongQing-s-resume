@@ -190,7 +190,7 @@ section{scroll-margin-top:84px;}
 .hero-hint{margin-top:12px;font-size:12.5px;color:var(--ink-2);opacity:.75;}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;}
 
-.hero-side{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start;}
+.hero-side{display:grid;grid-template-columns:225px 1fr;gap:18px;align-items:start;}
 /* 头像卡 */
 .avatar-card{
   background:var(--card);border-radius:var(--radius);
@@ -481,7 +481,7 @@ section{scroll-margin-top:84px;}
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:30px;}
   .hero-side{grid-template-columns:1fr;max-width:560px;}
-  .hero-side .avatar-card{width:100%;max-width:150px;justify-self:center;}
+  .hero-side .avatar-card{width:100%;max-width:225px;justify-self:center;}
   .stats{grid-template-columns:repeat(3,1fr);}
   .stat:nth-child(n+4)::before{display:none;}
   .stat:nth-child(4)::before{display:none;}
